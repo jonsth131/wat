@@ -30,5 +30,7 @@ def convert(text, base, pattern):
     try:
         result = ''.join([chr(int(v, base)) for v in text.split(' ')])
         return result if all_printable(result) else None
+    except OverflowError:
+        return None
     except ValueError:
         return None

@@ -74,6 +74,10 @@ class HexEncodingTests(unittest.TestCase):
         result = number.from_hex('BOOM')
         self.assertEqual(None, result)
 
+    def test_invalid_hex_string(self):
+        result = number.from_hex('abcdef1234567890')
+        self.assertEqual(None, result)
+
 
 if __name__ == '__main__':
     unittest.main()
