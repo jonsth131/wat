@@ -8,6 +8,10 @@ class BinaryEncodingTests(unittest.TestCase):
         result = number.from_bin('01110100 01100101 01110011 01110100')
         self.assertEqual('Binary: test', result)
 
+    def test_from_bin_no_spaces(self):
+        result = number.from_bin('01110100011001010111001101110100')
+        self.assertEqual('Binary: test', result)
+
     def test_too_large(self):
         result = number.from_bin('11111111')
         self.assertEqual(None, result)
@@ -60,6 +64,10 @@ class DecimalEncodingTests(unittest.TestCase):
 class HexEncodingTests(unittest.TestCase):
     def test_from_hex(self):
         result = number.from_hex('74 65 73 74')
+        self.assertEqual('Hex: test', result)
+
+    def test_from_hex_no_spaces(self):
+        result = number.from_hex('74657374')
         self.assertEqual('Hex: test', result)
 
     def test_too_large(self):
