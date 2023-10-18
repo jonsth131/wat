@@ -87,5 +87,23 @@ class HexEncodingTests(unittest.TestCase):
         self.assertEqual(None, result)
 
 
+class BigIntEncodingTests(unittest.TestCase):
+    def test_from_bigint(self):
+        result = number.from_bigint('1952805748')
+        self.assertEqual('BigInt: test', result)
+
+    def test_too_large(self):
+        result = number.from_bigint('999')
+        self.assertEqual(None, result)
+
+    def test_non_printable(self):
+        result = number.from_bigint('1')
+        self.assertEqual(None, result)
+
+    def test_invalid_input(self):
+        result = number.from_bigint('aaa')
+        self.assertEqual(None, result)
+
+
 if __name__ == '__main__':
     unittest.main()

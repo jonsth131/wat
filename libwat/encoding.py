@@ -11,7 +11,8 @@ def test_all(text):
         number.from_bin(text),
         number.from_oct(text),
         number.from_dec(text),
-        number.from_hex(text)
+        number.from_hex(text),
+        number.from_bigint(text)
     ]
 
     return [i for i in result if i is not None]

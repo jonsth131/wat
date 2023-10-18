@@ -35,6 +35,16 @@ def from_hex(text):
     return f'Hex: {result}' if result is not None else None
 
 
+def from_bigint(text):
+    if not re.match(r'^[0-9]+$', text):
+        return None
+    try:
+        result = bytes.fromhex(hex(int(text))[2:]).decode('utf-8')
+        return f'BigInt: {result}' if all_printable(result) else None
+    except ValueError:
+        return None
+
+
 def convert(text, base, pattern):
     if not re.match(pattern, text):
         return None
