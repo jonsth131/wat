@@ -10,7 +10,7 @@ def run_func(text, func, pattern, name):
     if re.match(pattern, text):
         try:
             value = func(text).decode()
-            return f'{name}: {value}' if all_printable(value) else None
+            return (name, value) if all_printable(value) else None
         except:
             return None
     else:
