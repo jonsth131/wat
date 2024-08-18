@@ -6,11 +6,11 @@ from libwat.encodings import number
 class BinaryEncodingTests(unittest.TestCase):
     def test_from_bin(self):
         result = number.from_bin('01110100 01100101 01110011 01110100')
-        self.assertEqual('Binary: test', result)
+        self.assertEqual(('Binary', 'test'), result)
 
     def test_from_bin_no_spaces(self):
         result = number.from_bin('01110100011001010111001101110100')
-        self.assertEqual('Binary: test', result)
+        self.assertEqual(('Binary', 'test'), result)
 
     def test_too_large(self):
         result = number.from_bin('11111111')
@@ -28,7 +28,7 @@ class BinaryEncodingTests(unittest.TestCase):
 class OctalEncodingTests(unittest.TestCase):
     def test_from_oct(self):
         result = number.from_oct('164 145 163 164')
-        self.assertEqual('Octal: test', result)
+        self.assertEqual(('Octal', 'test'), result)
 
     def test_too_large(self):
         result = number.from_oct('999')
@@ -46,7 +46,7 @@ class OctalEncodingTests(unittest.TestCase):
 class DecimalEncodingTests(unittest.TestCase):
     def test_from_dec(self):
         result = number.from_dec('116 101 115 116')
-        self.assertEqual('Decimal: test', result)
+        self.assertEqual(('Decimal', 'test'), result)
 
     def test_too_large(self):
         result = number.from_dec('999')
@@ -64,11 +64,11 @@ class DecimalEncodingTests(unittest.TestCase):
 class HexEncodingTests(unittest.TestCase):
     def test_from_hex(self):
         result = number.from_hex('74 65 73 74')
-        self.assertEqual('Hex: test', result)
+        self.assertEqual(('Hex', 'test'), result)
 
     def test_from_hex_no_spaces(self):
         result = number.from_hex('74657374')
-        self.assertEqual('Hex: test', result)
+        self.assertEqual(('Hex', 'test'), result)
 
     def test_too_large(self):
         result = number.from_hex('FF')
@@ -90,7 +90,7 @@ class HexEncodingTests(unittest.TestCase):
 class BigIntEncodingTests(unittest.TestCase):
     def test_from_bigint(self):
         result = number.from_bigint('1952805748')
-        self.assertEqual('BigInt: test', result)
+        self.assertEqual(('BigInt', 'test'), result)
 
     def test_too_large(self):
         result = number.from_bigint('999')

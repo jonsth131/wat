@@ -13,17 +13,17 @@ def from_bin(text):
         return None
     text = insert_space_every_n(text, 8)
     result = convert(text, 2, r'^([01]{8} ?)*$')
-    return ("Binary:", result) if result is not None else None
+    return ("Binary", result) if result is not None else None
 
 
 def from_oct(text):
     result = convert(text, 8, r'^([0-9]{2,3} ?)*$')
-    return ('Octal:', result) if result is not None else None
+    return ('Octal', result) if result is not None else None
 
 
 def from_dec(text):
     result = convert(text, 10, r'^([0-9]{2,3} ?)*$')
-    return ('Decimal:', result) if result is not None else None
+    return ('Decimal', result) if result is not None else None
 
 
 def from_hex(text):
@@ -32,7 +32,7 @@ def from_hex(text):
         return None
     text = insert_space_every_n(text, 2)
     result = convert(text, 16, r'^([a-fA-F0-9]{2} ?)*$')
-    return ('Hex:', result) if result is not None else None
+    return ('Hex', result) if result is not None else None
 
 
 def from_bigint(text):
@@ -40,7 +40,7 @@ def from_bigint(text):
         return None
     try:
         result = bytes.fromhex(hex(int(text))[2:]).decode('utf-8')
-        return ('BigInt:', result) if all_printable(result) else None
+        return ('BigInt', result) if all_printable(result) else None
     except ValueError:
         return None
 
